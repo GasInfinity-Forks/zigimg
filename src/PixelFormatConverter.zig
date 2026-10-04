@@ -866,13 +866,13 @@ pub fn convert(allocator: std.mem.Allocator, source: *const color.PixelStorage, 
 }
 
 fn conversionId(source_format: PixelFormat, destination_format: PixelFormat) u64 {
-    return @as(u64, @intFromEnum(source_format)) | @as(u64, @intFromEnum(destination_format)) << 32;
+    return @as(u64, @backingInt(source_format)) | @as(u64, @backingInt(destination_format)) << 32;
 }
 
 fn getFieldNameFromPixelFormat(comptime source_format: PixelFormat) []const u8 {
     const en = @typeInfo(PixelFormat).@"enum";
     inline for (en.field_names, en.field_values) |name, value| {
-        if (value == @intFromEnum(source_format)) {
+        if (value == @backingInt(source_format)) {
             return name;
         }
     }

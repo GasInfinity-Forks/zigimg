@@ -1672,7 +1672,7 @@ pub const CIEXYZAlpha = extern struct {
     a: f32 align(1) = 1.0,
 
     pub inline fn fromFloat4(value: math.float4) CIEXYZAlpha {
-        return @as(*align(@alignOf(math.float4))const CIEXYZAlpha, @ptrCast(&value)).*;
+        return @as(*align(@alignOf(math.float4)) const CIEXYZAlpha, @ptrCast(&value)).*;
     }
 
     pub inline fn toFloat4(self: CIEXYZAlpha) math.float4 {
@@ -1830,11 +1830,11 @@ pub const CIELabAlpha = extern struct {
     }
 
     pub inline fn fromFloat4(value: math.float4) CIELabAlpha {
-        return @as(*align(@alignOf(math.float4))const CIELabAlpha, @ptrCast(&value)).*;
+        return @as(*align(@alignOf(math.float4)) const CIELabAlpha, @ptrCast(&value)).*;
     }
 
     pub inline fn toFloat4(self: CIELabAlpha) math.float4 {
-        return @as(*align(@alignOf(CIELabAlpha))const math.float4, @ptrCast(&self)).*;
+        return @as(*align(@alignOf(CIELabAlpha)) const math.float4, @ptrCast(&self)).*;
     }
 };
 
@@ -2050,11 +2050,11 @@ pub const CIELuvAlpha = extern struct {
     }
 
     pub inline fn fromFloat4(value: math.float4) CIELuvAlpha {
-        return @as(*align(@alignOf(math.float4))const CIELuvAlpha, @ptrCast(&value)).*;
+        return @as(*align(@alignOf(math.float4)) const CIELuvAlpha, @ptrCast(&value)).*;
     }
 
     pub inline fn toFloat4(self: CIELuvAlpha) math.float4 {
-        return @as(*align(@alignOf(CIELuvAlpha))const math.float4, @ptrCast(&self)).*;
+        return @as(*align(@alignOf(CIELuvAlpha)) const math.float4, @ptrCast(&self)).*;
     }
 };
 
@@ -2386,11 +2386,11 @@ pub const OklabAlpha = extern struct {
     }
 
     pub inline fn fromFloat4(value: math.float4) OklabAlpha {
-        return @as(*align(@alignOf(math.float4))const OklabAlpha, @ptrCast(&value)).*;
+        return @as(*align(@alignOf(math.float4)) const OklabAlpha, @ptrCast(&value)).*;
     }
 
     pub inline fn toFloat4(self: OklabAlpha) math.float4 {
-        return @as(*align(@alignOf(OklabAlpha))const math.float4, @ptrCast(&self)).*;
+        return @as(*align(@alignOf(OklabAlpha)) const math.float4, @ptrCast(&self)).*;
     }
 };
 
