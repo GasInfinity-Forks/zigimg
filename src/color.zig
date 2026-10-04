@@ -1672,11 +1672,11 @@ pub const CIEXYZAlpha = extern struct {
     a: f32 align(1) = 1.0,
 
     pub inline fn fromFloat4(value: math.float4) CIEXYZAlpha {
-        return @bitCast(value);
+        return @as(*align(@alignOf(math.float4))const CIEXYZAlpha, @ptrCast(&value)).*;
     }
 
     pub inline fn toFloat4(self: CIEXYZAlpha) math.float4 {
-        return @bitCast(self);
+        return @as(*align(@alignOf(CIEXYZAlpha)) const math.float4, @ptrCast(&self)).*;
     }
 
     pub fn toXYZ(self: CIEXYZAlpha) CIEXYZ {
@@ -1830,11 +1830,11 @@ pub const CIELabAlpha = extern struct {
     }
 
     pub inline fn fromFloat4(value: math.float4) CIELabAlpha {
-        return @bitCast(value);
+        return @as(*align(@alignOf(math.float4))const CIELabAlpha, @ptrCast(&value)).*;
     }
 
     pub inline fn toFloat4(self: CIELabAlpha) math.float4 {
-        return @bitCast(self);
+        return @as(*align(@alignOf(CIELabAlpha))const math.float4, @ptrCast(&self)).*;
     }
 };
 
@@ -2050,11 +2050,11 @@ pub const CIELuvAlpha = extern struct {
     }
 
     pub inline fn fromFloat4(value: math.float4) CIELuvAlpha {
-        return @bitCast(value);
+        return @as(*align(@alignOf(math.float4))const CIELuvAlpha, @ptrCast(&value)).*;
     }
 
     pub inline fn toFloat4(self: CIELuvAlpha) math.float4 {
-        return @bitCast(self);
+        return @as(*align(@alignOf(CIELuvAlpha))const math.float4, @ptrCast(&self)).*;
     }
 };
 
@@ -2386,11 +2386,11 @@ pub const OklabAlpha = extern struct {
     }
 
     pub inline fn fromFloat4(value: math.float4) OklabAlpha {
-        return @bitCast(value);
+        return @as(*align(@alignOf(math.float4))const OklabAlpha, @ptrCast(&value)).*;
     }
 
     pub inline fn toFloat4(self: OklabAlpha) math.float4 {
-        return @bitCast(self);
+        return @as(*align(@alignOf(OklabAlpha))const math.float4, @ptrCast(&self)).*;
     }
 };
 
@@ -2840,7 +2840,7 @@ pub const RgbColorspace = struct {
         const all_ones: math.float4 = @splat(1.0);
 
         for (slice_rgba) |*rgba| {
-            const lab_alpha: CIELabAlpha = @bitCast(rgba.*);
+            const lab_alpha: *const CIELabAlpha = @ptrCast(rgba);
 
             const xyza = lab_alpha.toXYZAlphaPrecomputedWhitePoint(white_point_xyz);
 
@@ -2918,7 +2918,7 @@ pub const RgbColorspace = struct {
         const all_ones: math.float4 = @splat(1.0);
 
         for (slice_rgba) |*rgba| {
-            const luv_alpha: CIELuvAlpha = @bitCast(rgba.*);
+            const luv_alpha: *const CIELuvAlpha = @ptrCast(rgba);
 
             const xyza = luv_alpha.toXYZAlphaPrecomputedWhitePoint(white_point_xyz);
 
@@ -2996,7 +2996,7 @@ pub const RgbColorspace = struct {
         const all_ones: math.float4 = @splat(1.0);
 
         for (slice_rgba) |*rgba| {
-            const lab_alpha: OklabAlpha = @bitCast(rgba.*);
+            const lab_alpha: *const OklabAlpha = @ptrCast(rgba);
 
             const xyza = lab_alpha.toXYZAlpha();
 
